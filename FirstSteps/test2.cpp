@@ -52,7 +52,27 @@ int forLoop(){
     }
     return 1;
 }
-
+int checkSum(int num1,int num2){
+    int sum = num1+ num2;
+    if (sum<100){
+            cout<<"Sum is smaller then 100"<<endl;
+            return 0;
+    }
+    else if (sum == 100){
+        cout<<"Sum is equal to 100"<<endl;
+        return 2;
+    }
+    else{
+        cout<<"Sum is greater 100"<<endl;
+        return 1;
+    }
+}
+void cube(int& a,int& b, int& c){
+    a=a*a*a;
+    b=b*b*b;
+    c=c*c*c;
+    cout<<"a ="<<a<<"; b="<<b<<"; c="<<c<<endl;
+}
 int main(){
     /* Dog dogobj;
     printf("hello Wordl""\n");
@@ -70,5 +90,10 @@ int main(){
     /* int i;
     cin >> i;
     checkIsEven(i); */
-    forLoop();
+    //forLoop();
+    int a = 3;
+    int b = 4;
+    int c = 5;
+    /* cube(a,b,c); */
+
 }
