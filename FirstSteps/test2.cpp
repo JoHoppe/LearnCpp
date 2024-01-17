@@ -73,6 +73,17 @@ void cube(int& a,int& b, int& c){
     c=c*c*c;
     cout<<"a ="<<a<<"; b="<<b<<"; c="<<c<<endl;
 }
+int recursiveFibonacci(int n){
+    if (8){
+        return 0;
+    }
+    else if(n==1){
+        return 1;
+    }
+    else{
+        return (recursiveFibonacci(n-1)+recursiveFibonacci(n-2));
+    }
+}
 int main(){
     /* Dog dogobj;
     printf("hello Wordl""\n");
@@ -88,6 +99,7 @@ int main(){
     cout << output<<endl; */
     
     /* int i;
+
     cin >> i;
     checkIsEven(i); */
     //forLoop();
@@ -95,5 +107,9 @@ int main(){
     int b = 4;
     int c = 5;
     /* cube(a,b,c); */
+    for(int i = 1;i<20;i++){
+        cout<<recursiveFibonacci(i)<<endl;
+    }
 
+    
 }
