@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdio>
+#include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -20,7 +22,7 @@ void sortAsc(int* ptr,int size){
         }
     }
 }
-void createMatrix(int n){
+void createMatrix(){
     int row =5;
     int collumn=5;
     int** array2D = new int* [collumn];
@@ -29,7 +31,6 @@ void createMatrix(int n){
         array2D[counter1] = new int[row];
         for(int counter2 =0; counter2<collumn;counter2++){
             array2D[counter1][counter2]=numberCounter;
-            cout << "numberCounter = " << numberCounter << endl;
             numberCounter++;
         }
     }
@@ -45,14 +46,88 @@ void createMatrix(int n){
         delete[] array2D[dcounter1];
     }
     delete [] array2D;
+}
 
+void matrix2(int size){
+    int** matrix = new int*[size];
+
+    for (int counter1=0;counter1<size;counter1++){
+
+        matrix[counter1] = new int[size];
+        for(int counter2=0; counter2<size;counter2++){
+            if(counter2==counter1){
+                matrix[counter1][counter2]=0;
+            }
+            else if(counter1>counter2){
+                matrix[counter1][counter2]=1;
+            }
+            else if (counter1<counter2){
+                matrix[counter1][counter2]=-1;
+            }
+        }
+    }
+    //print the matrix
+    for(int i =0;i<size;i++){
+        for(int j=0;j<size;j++){
+            cout<<matrix[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+}
+void pascalTriangle(int size) {
+    // Allocate memory for Pascal's Triangle
+    int** triangle = new int*[size];
+    for (int counter1 = 0; counter1 < size; counter1++) {
+        triangle[counter1] = new int[counter1 + 1];
+        for (int counter2 = 0; counter2 <= counter1; counter2++) {
+            if (counter2 == 0 || counter2 - counter1 == 0) {
+                triangle[counter1][counter2] = 1;
+            } else {
+                triangle[counter1][counter2] = triangle[counter1 - 1][counter2 - 1] + triangle[counter1 - 1][counter2];
+            }
+        }
+    }
+
+    // Calculate the maximum number of digits in the triangle
+    int maxDigits = 1;
+    for (int pcounter1 = 0; pcounter1 < size; pcounter1++) {
+        for (int pcounter2 = 0; pcounter2 <= pcounter1; pcounter2++) {
+            int numDigits = to_string(triangle[pcounter1][pcounter2]).length();
+            if (numDigits > maxDigits) {
+                maxDigits = numDigits;
+            }
+        }
+    }
+
+    // Print the triangle with adjusted spacing
+    for (int pcounter1 = 0; pcounter1 < size; pcounter1++) {
+        for (int t = 0; t < (size - pcounter1 - 1) * (maxDigits + 1) / 2; t++) {
+            cout << " ";
+        }
+        for (int pcounter2 = 0; pcounter2 <= pcounter1; pcounter2++) {
+            cout << setw(maxDigits) << triangle[pcounter1][pcounter2] << " ";
+        }
+        cout << endl;
+    }
+
+    // Deallocate memory
+    for (int dcounter1 = 0; dcounter1 < size; dcounter1++) {
+        delete[] triangle[dcounter1];
+    }
+    delete[] triangle;
 }
 
 int arr[] = {23,34,2,3,5,12,42,56,89,8};
 int main(){
     sortAsc(arr,10);
     for (int i = 0; i < 10; i++) {
-    cout << arr[i] << " ";}
+    cout << arr[i] << "   ";}
     cout << endl;
-    createMatrix(0);
+    createMatrix();
+    cout<<endl;
+    matrix2(5);
+    cout<<endl;
+    pascalTriangle(10);
+
+    return 0;
 }
