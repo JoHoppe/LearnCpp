@@ -116,9 +116,60 @@ void pascalTriangle(int size) {
     }
     delete[] triangle;
 }
+void withdraw(double* balance, double amount) {
+    if(*balance-amount<0){
+        cout<<"You are broke"<<endl;
+    }
+    else{
+        *balance-=amount;
+        cout<<"New Balance: "<<*balance<<endl;
+    }
+
+}
+
+void deposit(double* balance, double amount) {
+    if(amount<0){
+        cout<<"You are broke. You don’t have enough money. Go away"<<endl;
+    }
+    else{
+        *balance+=amount;
+        cout<<"New balance: "<<*balance<<endl;
+    }
+}
+
 
 int arr[] = {23,34,2,3,5,12,42,56,89,8};
-int main(){
+//declare a void pointer to functions "withdraw" and "deposit" here
+void (*ptrWithdraw)(double*, double) = &withdraw;
+void (*ptrwDeposit)(double*, double) = &deposit;
+
+int main() {
+    // declare a pointer here to keep track of balance in the account and NAME it "balance"
+    double* ptrBalannce;
+    double harry_account_balance = 0;
+    ptrBalannce=&harry_account_balance;
+    //initialize the "balance" pointer such that it keeps track of harry_account_balance
+
+    cout << "Harry's Balance at start is: "<<*ptrBalannce; //print the balance here
+    cout <<endl;
+    double amount  = 1000.00; //setting the amount to be deposited
+    (*ptrwDeposit)(ptrBalannce,amount);
+    /* Make a deposit of the amount above by calling pointer to the appropriate function   */
+
+    cout << "Balance in harry account is: "<<*ptrBalannce; //print the balance here
+    cout<<endl;
+    amount = 500; //setting amount to 500
+    (*ptrWithdraw)(ptrBalannce,amount);
+    /* Withdraw the amount set above by calling pointer to the appropriate function  */
+
+    cout << "Balance after withdrawing cash is: "<<*ptrBalannce; //print the balance here
+    cout<<endl;
+    amount = 3000; //setting amount to 3000
+    
+    cout << "Withdrawing "<<amount << " now" <<endl; 
+    (*ptrWithdraw)(ptrBalannce,amount);
+    /* Withdraw the amount set above by calling pointer to the appropriate function  */
+
     sortAsc(arr,10);
     for (int i = 0; i < 10; i++) {
     cout << arr[i] << "   ";}
@@ -131,3 +182,4 @@ int main(){
 
     return 0;
 }
+
