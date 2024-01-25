@@ -1,5 +1,4 @@
 // this file is for practicing inheritance and classes
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -58,11 +57,83 @@ class Zebra:public Animal{
         };
 };
 
+/*
+Problem Statement
+
+You will first build three classes:
+
+    Mammal (parent class)
+    Dog (derived class)
+    Cat (derived class)
+
+Dog and Cat class will inherit from Mammal.
+
+In the exercise you have to implement the following:
+
+    Mammal class:
+        Has one protected variable for age of the mammal.
+        A constructor that takes the age of mammal as input and sets it.
+        The function Eat() that displays “Mammal eats food”.
+        Function Speak() that displays “Mammal speaks mammalian!!”.
+        Function get_Age() which returns the age of the mammal.
+
+    Dog class:
+        Inherits all the members from Mammal class.
+        Implement all member functions of Mammal class for Dog class.
+        Eat() should display “Dog eats meat”.
+        Speak() should display “Dog barks: ruff! ruff!”.
+        get_Age() should return Dog’s age.
+
+    Cat class:
+        Inherits all the members from Mammal class.
+        Implement all member functions of Mammal class for Cat class.
+        Eat() should display “Cat eats meat”.
+        Speak() should display “Cat meows: Meow! Meow!”.
+        get_Age() should return Cat’s age.
+*/
+class Mammal{
+    protected:
+    int age;
+    public:
+        Mammal(int new_age){
+        age=new_age;
+        };
+    virtual void eat()const{
+        cout<<"Mammal eats"<<endl;
+    }
+    virtual void speak()const{
+        cout <<"Mammal speaks"<<endl;
+    }
+    int get_Age()const{
+        return age;
+    }
+};
+
+class Dog:public Mammal{
+    public:
+        Dog(int new_age):Mammal(new_age){}
+       void eat()const override{
+            cout<<"Dog eats"<<endl;
+        }
+        void speak()const override{
+            cout<<"Dog speaks"<<endl;
+        }
+    };
+
+
 int main(){
     test(5,4);
     Zebra zebra(1,"Morty");
     zebra.message();
-    return 0;
+    Mammal mammal = Mammal(5);
+    Dog dog = Dog(4);
+    mammal.speak();
+    dog.speak();
+    dog.eat();
+    cout<< dog.get_Age()<<endl;
+    cout<< mammal.get_Age()<<endl;
+    mammal.eat();
+
 }
 
 
