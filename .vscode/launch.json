@@ -1,7 +1,6 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
@@ -9,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/johoppe/cpp_projects/LearnCpp",
-      "program": "/home/johoppe/cpp_projects/LearnCpp/build/Debug/outDebug",
+      "cwd": "/home/johoppe/cpp_projects/LearnCpp/FirstSteps",
+      "program": "/home/johoppe/cpp_projects/LearnCpp/FirstSteps/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
